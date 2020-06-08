@@ -128,14 +128,17 @@ public class ReservationController {
 		return ResponseEntity.ok().body(answer);
 	}
 	
+	@GetMapping("/reservation") 
+	public ResponseEntity getAllReservations() {	
+		return ResponseEntity.ok().body(ReservationGen.getInstance().getHistory());
+	}
+	
 	@GetMapping("/reservation/from/{initial_date}/to/{end_date}")
-	public Boolean findAllReservationsBetweenDates(@PathVariable("initial_date") String initial_date, @PathVariable("end_date") String end_date) {
+	public ResponseEntity findAllReservationsBetweenDates(@PathVariable("initial_date") String initial_date, @PathVariable("end_date") String end_date) {
 		//TODO - Check date
 		
-		ArrayList<ReservationSuccess> results = new ArrayList<>();
 		
-		
-		return true;
+		return ResponseEntity.ok().body("todo_route");
 	}
 
 

@@ -41,11 +41,8 @@ public class Utilitaries {
 	}
 	
 
-	public static boolean reserveFurnitureDateCheck(Date initial_date, Date end_date) {
-		
-		long diff = end_date.getTime() - initial_date.getTime();
-		int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
-		return diffDays >= 4;
+	public static boolean reserveFurnitureDateCheck(LocalDate initial_date, LocalDate end_date) {
+		return Days.daysBetween(initial_date, end_date).getDays() >= 4;
 	}
 	
 	public static ArrayList<Resource> convertResourcesDTOToResourceList(List<ResourcesDTO> wish_list) {
@@ -63,6 +60,8 @@ public class Utilitaries {
 		Days diff = Days.daysBetween(initialDate, endDate);
 		
 		if(diff.getDays() <= 0) throw new InvalidDateIntervalException("Date Interval Error. Code: 0x001");
+		
+		if(res.getType().equals("FURNITURE") && diff.getDays() < 4) throw new InvalidDateIntervalException("Furniture Date Interval Error. Code: 0x002");
 		
 		Double total = 0.0;
 		

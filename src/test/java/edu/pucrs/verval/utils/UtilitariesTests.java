@@ -75,6 +75,21 @@ public class UtilitariesTests {
 		}
 	}
 	
+	@Test
+	public void reservingAFurnitureWithLessThanFourDaysShouldReturnFalse() {
+		
+		Resource mock_resource = new Resource(1, "Wooden Desk", "XYZ-987", 2, 200.0, "FURNITURE", 0.0, 0, 0.0);
+		LocalDate initial_date = new LocalDate("2020-12-10");
+		LocalDate end_date = new LocalDate("2020-12-12");
+		Integer quantity = 1;
+		
+		
+		Boolean result = Utilitaries.reserveFurnitureDateCheck(initial_date, end_date);
+
+		assertEquals(result, false);
+		
+	}
+	
 	
 
 }
