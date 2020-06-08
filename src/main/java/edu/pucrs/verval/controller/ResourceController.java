@@ -28,7 +28,6 @@ public class ResourceController {
 		        Map.Entry pair = (Map.Entry)it.next();
 		        Resource res = (Resource) pair.getValue();	        
 		        	resource_by_type.add(res);
-		        it.remove(); // avoids a ConcurrentModificationException
 		    }
 		
 		return resource_by_type;
