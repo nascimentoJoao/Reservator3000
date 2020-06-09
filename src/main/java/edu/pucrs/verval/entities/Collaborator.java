@@ -2,7 +2,7 @@ package edu.pucrs.verval.entities;
 
 public class Collaborator {
 	
-	private Integer id;
+	private Integer collaborator_id;
 
 	private String registration;
 	
@@ -12,18 +12,18 @@ public class Collaborator {
 
 	public Collaborator(Integer id, String registration, String name, String email) {
 		super();
-		this.id = id;
+		this.collaborator_id = id;
 		this.registration = registration;
 		this.name = name;
 		this.email = email;
 	}
 
 	public Integer getId() {
-		return id;
+		return collaborator_id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.collaborator_id = id;
 	}
 
 	public String getRegistration() {

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.pucrs.verval.data.ResourceGen;
 import edu.pucrs.verval.entities.Resource;
+import edu.pucrs.verval.response.ResourceTotalCost;
 
 @RestController
 @CrossOrigin
@@ -51,8 +53,13 @@ public class ResourceController {
 	}
 	
 	@GetMapping("/resources/{resource_id}/cost")
-	public Double calculateCostByResourceId(@PathVariable("resource_id") String resource_id) {
-		return 0.0;
+	public ResponseEntity calculateCostByResourceId(@PathVariable("resource_id") String resource_id) {
+		
+		ResourceTotalCost rtc = new ResourceTotalCost();
+		rtc.setTotal_cost(ResourceGen.getInstance().getResourcesCost().get(Integer.valueOf(resource_id)));
+		rtc.setResource(ResourceGen.getInstance().getResources().get(Integer.valueOf(resource_id)));
+		
+		return ResponseEntity.ok().body(rtc);
 	}
 
 }

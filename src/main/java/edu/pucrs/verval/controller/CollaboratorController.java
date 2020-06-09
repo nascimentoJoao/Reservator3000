@@ -1,6 +1,9 @@
 package edu.pucrs.verval.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.pucrs.verval.data.CollaboratorGen;
+import edu.pucrs.verval.data.ResourceGen;
 import edu.pucrs.verval.entities.Collaborator;
+import edu.pucrs.verval.entities.Resource;
 
 @RestController
 @CrossOrigin
@@ -18,8 +23,18 @@ import edu.pucrs.verval.entities.Collaborator;
 public class CollaboratorController {
 	
 	@GetMapping("/collaborators")
-	public ResponseEntity<HashMap<Integer, Collaborator>> returnAllCollaborators() {
-		return ResponseEntity.ok().body(CollaboratorGen.getInstance().getCollaborators());
+	public ResponseEntity<ArrayList<Collaborator>> returnAllCollaborators() {
+		
+		ArrayList<Collaborator> collaborators = new ArrayList<>();
+		
+		 Iterator it = CollaboratorGen.getInstance().getCollaborators().entrySet().iterator();
+		    while (it.hasNext()) {
+		        Map.Entry pair = (Map.Entry)it.next();
+		        Collaborator res = (Collaborator) pair.getValue();	        
+		        collaborators.add(res);
+		    }
+		
+		return ResponseEntity.ok().body(collaborators);
 	}
 	
 	@GetMapping("/collaborators/{collaborator_id}")

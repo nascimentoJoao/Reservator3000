@@ -16,6 +16,10 @@ public class ResourceGen {
 	public ResourceGen() {
 		this.resources = new HashMap<>();
 		this.resource_cost = new HashMap<>();
+		
+		for(int i = 1; i <= 26; i++) {
+			this.resource_cost.put(i, 0.0);
+		}
 				
 		//Generate physical spaces (rooms)
 		this.resources.put(1, new Resource(1, "Room 506", "R649-506", 1, 30.0, "ROOM", 40.0, 40, 10.0));
@@ -41,15 +45,15 @@ public class ResourceGen {
 		this.resources.put(16, new Resource(16, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
 		this.resources.put(17, new Resource(17, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
 		this.resources.put(18, new Resource(18, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(29, new Resource(19, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(20, new Resource(19, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
 		
 		//Generate furniture resources (tables, chairs, desks)
-		this.resources.put(20, new Resource(20, "Wooden Chair Kit x4",                        "F281-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(21, new Resource(21, "Wooden Table with Golden Details",           "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(22, new Resource(22, "Steel Chair Kit x4",                         "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(23, new Resource(23, "Steel Table",                                "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(24, new Resource(24, "Glass Table With Platinum Decoration",       "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(25, new Resource(25, "Gigantic Lamp With Purple Details",          "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(21, new Resource(20, "Wooden Chair Kit x4",                        "F281-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(22, new Resource(21, "Wooden Table with Golden Details",           "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(23, new Resource(22, "Steel Chair Kit x4",                         "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(24, new Resource(23, "Steel Table",                                "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(25, new Resource(24, "Glass Table With Platinum Decoration",       "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(26, new Resource(25, "Gigantic Lamp With Purple Details",          "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
 	}
 
 	public static ResourceGen getInstance() {

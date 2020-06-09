@@ -9,11 +9,18 @@ import edu.pucrs.verval.entities.Collaborator;
 public class CollaboratorGen {
 	
 	private HashMap<Integer, Collaborator> collaborators;
+	private HashMap<Integer, Double> collaborator_cost;
 	
 	public static CollaboratorGen instance = new CollaboratorGen();
 
 	public CollaboratorGen() {
 		this.collaborators = new HashMap<>();
+		this.collaborator_cost = new HashMap<>();
+		
+		for(int i = 0; i <= 10; i++) {
+			this.collaborator_cost.put(i, 0.0);
+		}
+		
 		this.collaborators.put(1, new Collaborator(1,  "12345",  "Chiara Paskulin",     "chiara.paskulin@mail.com"));
 		this.collaborators.put(2, new Collaborator(2,  "56931",  "Guilherme Munaretto", "guilherme.muna@mail.com"));
 		this.collaborators.put(3, new Collaborator(3,  "93750",  "Henrique Kops",       "henrique.kops@mail.com"));
@@ -28,6 +35,10 @@ public class CollaboratorGen {
 	
 	public HashMap<Integer, Collaborator> getCollaborators() {
 		return this.collaborators;
+	}
+	
+	public HashMap<Integer, Double> getCollaboratorCost() {
+		return this.collaborator_cost;
 	}
 	
 	public static CollaboratorGen getInstance() {
