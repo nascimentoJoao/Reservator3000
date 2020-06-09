@@ -62,8 +62,15 @@ public class ReservationController {
 			
 			rgi.setAmount(dto.getAmount());
 			
+			
+			
 			Resource resource = ResourceGen.getInstance().getResources().get(dto.getResource_id());
 			rgi.setResource(resource);
+			
+			if(dto.getAmount() > resource.getAvailable_amount()) {
+				System.out.println("insuficient_amount");
+				return ResponseEntity.ok().body("insuficient_amount");
+			}
 			
 			//Check most recent reservation with the chosen initial date.
 			ArrayList<ArrayList<CollaboratorCostReservation>> all_items_reservations = ReservationGen.getInstance().getItem_date().get(resource.getId());
