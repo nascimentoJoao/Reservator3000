@@ -32,27 +32,27 @@ public class ResourceGen {
 		//Generate physical spaces (auditoriums)
 		this.resources.put(7,  new Resource(7,  "Auditorium I",   "A441-506", 1, 45.0, "ROOM", 80.0, 60, 15.0));
 		this.resources.put(8,  new Resource(8,  "Auditorium II",  "A441-203", 1, 39.0, "ROOM", 75.0, 40, 15.0));
-		this.resources.put(9, new Resource(9,  "Auditorium III", "A441-882", 1, 39.0, "ROOM", 49.0, 50, 15.0));
+		this.resources.put(9,  new Resource(9,  "Auditorium III", "A441-882", 1, 39.0, "ROOM", 49.0, 50, 15.0));
 		this.resources.put(10, new Resource(10, "Auditorium IV",  "A441-405", 1, 28.0, "ROOM", 50.0, 60, 15.0));
 		this.resources.put(11, new Resource(11, "Auditorium V",   "A441-240", 1, 40.0, "ROOM", 60.0, 80, 15.0));
 
 		
 		//Generate mobile resources (notebooks, smartphones, tablets)
-		this.resources.put(12, new Resource(12, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(13, new Resource(13, "Tablet Acer Octa-Core",  "M539-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(14, new Resource(14, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(15, new Resource(15, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(16, new Resource(16, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(17, new Resource(17, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(18, new Resource(18, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
-		this.resources.put(20, new Resource(19, "Smartphone Samsung 8GB", "M520-41P", 5, 300.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(12, new Resource(12, "Smartphone Samsung 8GB",         "M520-4FK", 5, 300.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(13, new Resource(13, "Tablet Acer Octa-Core",          "M539-41P", 5, 300.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(14, new Resource(14, "Smartphone iPhone X 128GB",      "M543-4HP", 5, 900.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(15, new Resource(15, "Smartphone Moto G8 Plus 32GB",   "M510-4Y6", 5, 250.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(16, new Resource(16, "USB Hub 4 Ports",                "M500-41P", 5,  20.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(17, new Resource(17, "Acces Point 100MBPS",            "M501-41P", 5, 200.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(18, new Resource(18, "Macbook Air 128GB 1TB SSD",      "M504-41P", 5, 2000.0, "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
+		this.resources.put(20, new Resource(19, "Notebook Samsung 64GB 500GB HD", "M509-41P", 5, 800.0,  "MOBILE_EQUIPMENT", 0.0, 0, 0.0));
 		
 		//Generate furniture resources (tables, chairs, desks)
-		this.resources.put(21, new Resource(20, "Wooden Chair Kit x4",                        "F281-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(22, new Resource(21, "Wooden Table with Golden Details",           "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(23, new Resource(22, "Steel Chair Kit x4",                         "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(24, new Resource(23, "Steel Table",                                "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
-		this.resources.put(25, new Resource(24, "Glass Table With Platinum Decoration",       "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(21, new Resource(20, "Wooden Chair Kit x4",                        "F281-41P", 5, 100.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(22, new Resource(21, "Wooden Table with Golden Details",           "M520-41P", 5, 150.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(23, new Resource(22, "Steel Chair Kit x4",                         "M520-41P", 5, 500.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(24, new Resource(23, "Steel Table",                                "M520-41P", 5, 200.0, "FURNITURE", 0.0, 0, 0.0));
+		this.resources.put(25, new Resource(24, "Glass Table With Platinum Decoration",       "M520-41P", 5, 800.0, "FURNITURE", 0.0, 0, 0.0));
 		this.resources.put(26, new Resource(25, "Gigantic Lamp With Purple Details",          "M520-41P", 5, 300.0, "FURNITURE", 0.0, 0, 0.0));
 	}
 
