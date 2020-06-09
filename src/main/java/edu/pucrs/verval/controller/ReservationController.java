@@ -105,7 +105,7 @@ public class ReservationController {
 				if(Utilitaries.checkReservationDate(most_recent.get(most_recent.size() - 1).getEnd(), dto.getBegin_date())) {
 					
 					//If don't check if has available resources.
-					if(Utilitaries.hasAvailableResource(resource)) {
+					if(Utilitaries.hasAvailableResource(resource) || dto.getAmount() > resource.getAvailable_amount()) {
 					ArrayList<CollaboratorCostReservation> inner = new ArrayList<>();
 					
 					CollaboratorCostReservation info = new CollaboratorCostReservation(collaborator, dto.getBegin_date(), dto.getEnd_date());
