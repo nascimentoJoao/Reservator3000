@@ -20,7 +20,7 @@ public class ResourcesDTO {
 	
 	@JsonDeserialize(using=LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
-	private LocalDate initial_date;
+	private LocalDate begin_date;
 	
 	@JsonDeserialize(using=LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
@@ -50,12 +50,12 @@ public class ResourcesDTO {
 		this.unity_price = unity_price;
 	}
 
-	public LocalDate getInitial_date() {
-		return initial_date;
+	public LocalDate getBegin_date() {
+		return begin_date;
 	}
 
-	public void setInitial_date(LocalDate initial_date) {
-		this.initial_date = initial_date;
+	public void setBegin_date(LocalDate initial_date) {
+		this.begin_date = initial_date;
 	}
 
 	public LocalDate getEnd_date() {

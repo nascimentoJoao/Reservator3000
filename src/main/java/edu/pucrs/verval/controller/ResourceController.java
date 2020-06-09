@@ -22,7 +22,7 @@ import edu.pucrs.verval.response.ResourceTotalCost;
 public class ResourceController {
 	
 	@GetMapping("/resources")
-	public Iterable<Resource> findAllResources() {
+	public ResponseEntity<Iterable<Resource>> findAllResources() {
 		List<Resource> resource_by_type = new ArrayList<>();
 		
 		 Iterator it = ResourceGen.getInstance().getResources().entrySet().iterator();
@@ -32,11 +32,12 @@ public class ResourceController {
 		        	resource_by_type.add(res);
 		    }
 		
-		return resource_by_type;
+		    
+		return ResponseEntity.ok().body(resource_by_type);
 	}
 	
 	@GetMapping("/resources/{type_of}")
-	public Iterable<Resource> findAllResourcesByType(@PathVariable("type_of") String type_of) {
+	public ResponseEntity<Iterable<Resource>> findAllResourcesByType(@PathVariable("type_of") String type_of) {
 		type_of = type_of.toLowerCase();
 		List<Resource> resource_by_type = new ArrayList<>();
 		
@@ -49,11 +50,11 @@ public class ResourceController {
 		        }
 		    }
 		
-		return resource_by_type;
+		return ResponseEntity.ok().body(resource_by_type);
 	}
 	
 	@GetMapping("/resources/{resource_id}/cost")
-	public ResponseEntity calculateCostByResourceId(@PathVariable("resource_id") String resource_id) {
+	public ResponseEntity<ResourceTotalCost> calculateCostByResourceId(@PathVariable("resource_id") String resource_id) {
 		
 		ResourceTotalCost rtc = new ResourceTotalCost();
 		rtc.setTotal_cost(ResourceGen.getInstance().getResourcesCost().get(Integer.valueOf(resource_id)));

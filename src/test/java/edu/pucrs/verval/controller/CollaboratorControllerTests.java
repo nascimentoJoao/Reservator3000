@@ -21,19 +21,19 @@ public class CollaboratorControllerTests {
 	
 	@Test
 	public void returnAllCollaboratorsShouldBeOk() throws Exception {
-		this.mockMvc.perform(get("/api/collaborator"))
+		this.mockMvc.perform(get("/api/collaborators"))
 			.andExpect(status().isOk());
 	}
 	
 	@Test
 	public void returnCollaboratorByIdShouldReturnCollaborator() throws Exception {
-		this.mockMvc.perform(get("/api/collaborator/1"))
+		this.mockMvc.perform(get("/api/collaborators/1"))
 		.andExpect(status().isOk());
 	}
 	
 	@Test
 	public void returnCollaboratorByIdWithInvalidIdShouldReturnBadRequest() throws Exception {
-		this.mockMvc.perform(get("/api/collaborator/AAAA"))
+		this.mockMvc.perform(get("/api/collaborators/AAAA"))
 		.andExpect(status().isBadRequest());
 	}
 

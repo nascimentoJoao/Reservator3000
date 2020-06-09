@@ -2,10 +2,13 @@ package edu.pucrs.verval.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.joda.time.LocalDate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,7 +56,7 @@ public class ReservationController {
 		for(ResourcesDTO dto : reservation.getResources()) {
 			
 			ReservationGroupItems rgi = new ReservationGroupItems();
-			rgi.setBegin_date(dto.getInitial_date());
+			rgi.setBegin_date(dto.getBegin_date());
 			rgi.setEnd_date(dto.getEnd_date());
 			
 			Resource resource = ResourceGen.getInstance().getResources().get(dto.getResource_id());
@@ -67,10 +70,10 @@ public class ReservationController {
 				//There is no reservations for this item.
 				ArrayList<CollaboratorCostReservation> inner = new ArrayList<>();
 				
-				CollaboratorCostReservation info = new CollaboratorCostReservation(collaborator, dto.getInitial_date(), dto.getEnd_date());
+				CollaboratorCostReservation info = new CollaboratorCostReservation(collaborator, dto.getBegin_date(), dto.getEnd_date());
 				Double total_cost = 0.0;
 				
-				total_cost = Utilitaries.calculateCostForReservation(resource, dto.getAmount(), dto.getInitial_date(), dto.getEnd_date());
+				total_cost = Utilitaries.calculateCostForReservation(resource, dto.getAmount(), dto.getBegin_date(), dto.getEnd_date());
 			
 				info.setCost(total_cost);
 				resource.setAvailable_amount(resource.getAvailable_amount() - 1);
@@ -98,16 +101,16 @@ public class ReservationController {
 				ArrayList<CollaboratorCostReservation> most_recent = all_items_reservations.get(all_items_reservations.size() - 1);
 				
 				//Check if there is no problem with the selected date.
-				if(Utilitaries.checkReservationDate(most_recent.get(most_recent.size() - 1).getEnd(), dto.getInitial_date())) {
+				if(Utilitaries.checkReservationDate(most_recent.get(most_recent.size() - 1).getEnd(), dto.getBegin_date())) {
 					
 					//If don't check if has available resources.
 					if(Utilitaries.hasAvailableResource(resource)) {
 					ArrayList<CollaboratorCostReservation> inner = new ArrayList<>();
 					
-					CollaboratorCostReservation info = new CollaboratorCostReservation(collaborator, dto.getInitial_date(), dto.getEnd_date());
+					CollaboratorCostReservation info = new CollaboratorCostReservation(collaborator, dto.getBegin_date(), dto.getEnd_date());
 					Double total_cost = 0.0;
 					
-					total_cost = Utilitaries.calculateCostForReservation(resource, dto.getAmount(), dto.getInitial_date(), dto.getEnd_date());
+					total_cost = Utilitaries.calculateCostForReservation(resource, dto.getAmount(), dto.getBegin_date(), dto.getEnd_date());
 					
 					info.setCost(total_cost);
 					resource.setAvailable_amount(resource.getAvailable_amount() - 1);
@@ -146,13 +149,28 @@ public class ReservationController {
 	
 	@GetMapping("/reservations") 
 	public ResponseEntity getAllReservations() {	
-		return ResponseEntity.ok().body(ReservationGen.getInstance().getHistory());
+		
+		ArrayList<ReservationSuccess> all_reservations = new ArrayList<>();
+		
+		Iterator it = CollaboratorGen.getInstance().getCollaborators().entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        ReservationSuccess res = (ReservationSuccess) pair.getValue();	        
+	        all_reservations.add(res);
+	    }
+		
+		return ResponseEntity.ok().body(all_reservations);
 	}
 	
 	@GetMapping("/reservations?start={initial_date}&end={end_date}")
 	public ResponseEntity findAllReservationsBetweenDates(@PathVariable("initial_date") String initial_date, @PathVariable("end_date") String end_date) {
 		//TODO - Check date
 		return ResponseEntity.ok().body("todo_route");
+	}
+	
+	@DeleteMapping("/reservations/delete?group_id={group_id}")
+	public ResponseEntity deleteReservationId(@PathVariable("group_id") String group_id ) {
+		return ResponseEntity.ok().body(ReservationGen.getInstance().getHistory().remove(group_id));
 	}
 
 

@@ -2,10 +2,14 @@ package edu.pucrs.verval.utils;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import edu.pucrs.verval.DTO.ResourcesDTO;
 import edu.pucrs.verval.entities.Resource;
 import edu.pucrs.verval.exception.InvalidDateIntervalException;
 
@@ -87,6 +91,61 @@ public class UtilitariesTests {
 		Boolean result = Utilitaries.reserveFurnitureDateCheck(initial_date, end_date);
 
 		assertEquals(result, false);
+	}
+	
+	@Test
+	public void checkingCollaboratorWithNegativeIdShouldReturnFalse() {
+		
+		Boolean result = Utilitaries.collaboratorExists(-1);
+		assertEquals(result, false);
+		
+	}
+	
+	@Test
+	public void checkingCollaboratorWithNonExistentValueShouldReturnFalse() {
+		Boolean result = Utilitaries.collaboratorExists(Integer.MAX_VALUE);
+		
+		assertEquals(result, false);
+	}
+	
+	@Test
+	public void checkingCollaboratorWithValueOneShouldReturnTrue() {
+		Boolean result = Utilitaries.collaboratorExists(1);
+		
+		assertEquals(result, true);
+	}
+	
+	@Test
+	public void checkingCollaboratorWithValueTenShouldReturnTrue() {
+		Boolean result = Utilitaries.collaboratorExists(10);
+		
+		assertEquals(result, true);
+	}
+	
+	@Test
+	public void checkingCollaboratorWithValueAboveLimitShouldReturnFalse() {
+		Boolean result = Utilitaries.collaboratorExists(11);
+		
+		assertEquals(result, false);
+	}
+	
+	@Test
+	public void convertingResourcesDTOShouldReturnResourceList() {
+		
+		List<ResourcesDTO> list_of_dto = new ArrayList<>();
+		
+		ResourcesDTO dto = new ResourcesDTO();
+		dto.setResource_id(1);
+		dto.setAmount(1);
+		dto.setInitial_date(new LocalDate("2020-04-01"));
+		dto.setEnd_date(new LocalDate("2020-04-03"));
+		dto.setUnity_price(100.0);
+		
+		list_of_dto.add(dto);
+		
+		ArrayList<Resource> convert = Utilitaries.convertResourcesDTOToResourceList(list_of_dto);
+		
+		assertEquals(convert.getClass().equals(ArrayList.class), true);
 	}
 	
 	

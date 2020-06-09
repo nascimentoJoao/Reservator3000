@@ -19,6 +19,9 @@ import edu.pucrs.verval.exception.InvalidDateIntervalException;
 public class Utilitaries {
 	
 	public static boolean collaboratorExists(Integer collaborator_id) {
+		
+		if(collaborator_id <= 0) return false;
+		
 		HashMap<Integer, Collaborator> collab = CollaboratorGen.getInstance().getCollaborators();
 		
 		return collab.containsKey(collaborator_id);
