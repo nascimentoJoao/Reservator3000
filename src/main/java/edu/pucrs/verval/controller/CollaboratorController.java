@@ -17,6 +17,7 @@ import edu.pucrs.verval.data.ResourceGen;
 import edu.pucrs.verval.entities.Collaborator;
 import edu.pucrs.verval.entities.Resource;
 import edu.pucrs.verval.response.CollaboratorTotalCost;
+import edu.pucrs.verval.response.ResourceTotalCost;
 
 @RestController
 @CrossOrigin
@@ -50,15 +51,31 @@ public class CollaboratorController {
 		
 	}
 	
-	@GetMapping("/collaborators/{collaborator_id}/cost")
-	public ResponseEntity returnCollaboratorCost(@PathVariable("collaborator_id") String collaborator_id) {
+	@GetMapping("/collaborators/cost")
+	public ResponseEntity returnCollaboratorCost() {
 		
-		CollaboratorTotalCost ctc = new CollaboratorTotalCost();
 		
-		ctc.setCollaborator(CollaboratorGen.getInstance().getCollaborators().get(Integer.valueOf(collaborator_id)));
-		ctc.setTotal_cost(CollaboratorGen.getInstance().getCollaboratorCost().get(Integer.valueOf(collaborator_id)));
+		ArrayList<CollaboratorTotalCost> response = new ArrayList<>();
 		
-		return ResponseEntity.ok().body(ctc);
+
+		
+		Iterator it = CollaboratorGen.getInstance().getCollaborators().entrySet().iterator();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        
+			CollaboratorTotalCost ctc = new CollaboratorTotalCost();
+			
+			Collaborator res = (Collaborator) pair.getValue();
+			
+			ctc.setTotal_cost(CollaboratorGen.getInstance().getCollaboratorCost().get(pair.getKey()));
+			ctc.setCollaborator(CollaboratorGen.getInstance().getCollaborators().get(pair.getKey()));
+	        
+	        response.add(ctc);
+	    }
+		
+		
+		return ResponseEntity.ok().body(response);
 	}
 	
 

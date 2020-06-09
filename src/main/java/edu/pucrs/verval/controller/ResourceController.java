@@ -9,11 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.pucrs.verval.data.ResourceGen;
 import edu.pucrs.verval.entities.Resource;
+import edu.pucrs.verval.response.AdminConfig;
 import edu.pucrs.verval.response.ResourceTotalCost;
 
 @RestController
@@ -53,14 +55,46 @@ public class ResourceController {
 		return ResponseEntity.ok().body(resource_by_type);
 	}
 	
-	@GetMapping("/resources/{resource_id}/cost")
-	public ResponseEntity<ResourceTotalCost> calculateCostByResourceId(@PathVariable("resource_id") String resource_id) {
+	@GetMapping("/resources/cost")
+	public ResponseEntity<ArrayList<ResourceTotalCost>> calculateCostByResourceId() {
 		
-		ResourceTotalCost rtc = new ResourceTotalCost();
-		rtc.setTotal_cost(ResourceGen.getInstance().getResourcesCost().get(Integer.valueOf(resource_id)));
-		rtc.setResource(ResourceGen.getInstance().getResources().get(Integer.valueOf(resource_id)));
+		ArrayList<ResourceTotalCost> response = new ArrayList<ResourceTotalCost>();
 		
-		return ResponseEntity.ok().body(rtc);
+		Iterator it = ResourceGen.getInstance().getResources().entrySet().iterator();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        
+	        ResourceTotalCost rtc = new ResourceTotalCost();
+	        
+	        Resource res = (Resource) pair.getValue();
+	        
+			rtc.setTotal_cost(ResourceGen.getInstance().getResourcesCost().get(pair.getKey()));
+			rtc.setResource(ResourceGen.getInstance().getResources().get(pair.getKey()));
+	        
+	        response.add(rtc);
+	    }
+
+		return ResponseEntity.ok().body(response);
+	}
+	
+	@PostMapping("/admin")
+	public ResponseEntity changePriceSeatAndMeter(AdminConfig config) {
+		
+		Iterator it = ResourceGen.getInstance().getResources().entrySet().iterator();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        
+	        Resource res = (Resource) pair.getValue();
+	        if(res.getType().equals("ROOM")) {
+	        	res.setPrice(config.getMeter_price());
+	        	res.setPrice_per_seat(config.getSeat_price());
+	        }
+	    }
+	    
+	    return ResponseEntity.ok().body(true);
+		
 	}
 
 }

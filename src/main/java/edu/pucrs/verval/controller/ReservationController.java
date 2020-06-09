@@ -26,6 +26,7 @@ import edu.pucrs.verval.entities.Collaborator;
 import edu.pucrs.verval.entities.CollaboratorCostReservation;
 import edu.pucrs.verval.entities.Resource;
 import edu.pucrs.verval.exception.InvalidDateIntervalException;
+import edu.pucrs.verval.response.AdminConfig;
 import edu.pucrs.verval.response.ReservationGroupItems;
 import edu.pucrs.verval.response.ReservationSuccess;
 import edu.pucrs.verval.utils.Utilitaries;
@@ -175,6 +176,5 @@ public class ReservationController {
 		
 		return ResponseEntity.ok().body("deleted_"+group_id);
 	}
-
 
 }
