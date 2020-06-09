@@ -137,7 +137,7 @@ public class UtilitariesTests {
 		ResourcesDTO dto = new ResourcesDTO();
 		dto.setResource_id(1);
 		dto.setAmount(1);
-		dto.setInitial_date(new LocalDate("2020-04-01"));
+		dto.setBegin_date(new LocalDate("2020-04-01"));
 		dto.setEnd_date(new LocalDate("2020-04-03"));
 		dto.setUnity_price(100.0);
 		
