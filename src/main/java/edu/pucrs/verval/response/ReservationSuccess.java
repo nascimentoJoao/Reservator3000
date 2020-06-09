@@ -56,14 +56,5 @@ public class ReservationSuccess {
 	public void setCreation_date(LocalDate creation_date) {
 		this.creation_date = creation_date;
 	}
-
-	public Integer getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
-	
 	
 }
