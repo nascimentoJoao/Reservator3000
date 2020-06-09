@@ -78,6 +78,25 @@ public class ResourceController {
 		return ResponseEntity.ok().body(response);
 	}
 	
+	@GetMapping("/admin")
+	public ResponseEntity showPriceSeatAndMeter(AdminConfig config) {
+		
+		Iterator it = ResourceGen.getInstance().getResources().entrySet().iterator();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        
+	        Resource res = (Resource) pair.getValue();
+	        if(res.getType().equals("ROOM")) {
+	        	res.setPrice(config.getMeter_price());
+	        	res.setPrice_per_seat(config.getSeat_price());
+	        }
+	    }
+	    
+	    return ResponseEntity.ok().body(true);
+		
+	}
+	
 	@PostMapping("/admin")
 	public ResponseEntity changePriceSeatAndMeter(AdminConfig config) {
 		
