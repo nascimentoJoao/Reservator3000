@@ -69,7 +69,7 @@ public class ReservationController {
 			
 			if(dto.getAmount() > resource.getAvailable_amount()) {
 				System.out.println("insuficient_amount");
-				return ResponseEntity.ok().body("insuficient_amount");
+				return ResponseEntity.badRequest().body("insuficient_amount");
 			}
 			
 			//Check most recent reservation with the chosen initial date.
@@ -144,12 +144,12 @@ public class ReservationController {
 					
 					} else {
 						System.out.println("insuficient_amount");
-						return ResponseEntity.ok().body("insuficient_amount");
+						return ResponseEntity.badRequest().body("insuficient_amount");
 					}
 					
 				}else {
 					System.out.println("reservation_error");
-					return ResponseEntity.ok().body("reservation_error");
+					return ResponseEntity.badRequest().body("reservation_error");
 				}
 			}	
 		}
