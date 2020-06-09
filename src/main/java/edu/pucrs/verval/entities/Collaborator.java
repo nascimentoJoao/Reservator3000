@@ -10,20 +10,20 @@ public class Collaborator {
 	
 	private String email;
 
-	public Collaborator(Integer id, String registration, String name, String email) {
+	public Collaborator(Integer collaborator_id, String registration, String name, String email) {
 		super();
-		this.collaborator_id = id;
+		this.collaborator_id = collaborator_id;
 		this.registration = registration;
 		this.name = name;
 		this.email = email;
 	}
 
-	public Integer getId() {
+	public Integer getcollaborator_id() {
 		return collaborator_id;
 	}
 
-	public void setId(Integer id) {
-		this.collaborator_id = id;
+	public void setcollaborator_id(Integer collaborator_id) {
+		this.collaborator_id = collaborator_id;
 	}
 
 	public String getRegistration() {

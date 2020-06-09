@@ -41,7 +41,7 @@ public class ReservationController {
 		ReservationSuccess answer = new ReservationSuccess();
 		ArrayList<ReservationGroupItems> items = new ArrayList<>();
 		
-		answer.setCollaborator_id(collaborator.getId());
+		answer.setCollaborator_id(collaborator.getcollaborator_id());
 		answer.setResources(items);
 		answer.setCreation_date(new LocalDate());
 		answer.setTotal_price(0.0);
