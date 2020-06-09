@@ -33,11 +33,11 @@ public class ResourceGen {
 		this.resources.put(6, new Resource(6, "Room 202", "R649-202", 1, global_meter_price, "ROOM", 18.0, 10, global_seat_price));
 		
 		//Generate physical spaces (auditoriums)
-		this.resources.put(7,  new Resource(7,  "Auditorium I",   "A441-506", 1, 45.0, "ROOM", 80.0, 60, 15.0));
-		this.resources.put(8,  new Resource(8,  "Auditorium II",  "A441-203", 1, 39.0, "ROOM", 75.0, 40, 15.0));
-		this.resources.put(9,  new Resource(9,  "Auditorium III", "A441-882", 1, 39.0, "ROOM", 49.0, 50, 15.0));
-		this.resources.put(10, new Resource(10, "Auditorium IV",  "A441-405", 1, 28.0, "ROOM", 50.0, 60, 15.0));
-		this.resources.put(11, new Resource(11, "Auditorium V",   "A441-240", 1, 40.0, "ROOM", 60.0, 80, 15.0));
+		this.resources.put(7,  new Resource(7,  "Auditorium I",   "A441-506", 1, global_meter_price, "ROOM", 80.0, 60, global_seat_price));
+		this.resources.put(8,  new Resource(8,  "Auditorium II",  "A441-203", 1, global_meter_price, "ROOM", 75.0, 40, global_seat_price));
+		this.resources.put(9,  new Resource(9,  "Auditorium III", "A441-882", 1, global_meter_price, "ROOM", 49.0, 50, global_seat_price));
+		this.resources.put(10, new Resource(10, "Auditorium IV",  "A441-405", 1, global_meter_price, "ROOM", 50.0, 60, global_seat_price));
+		this.resources.put(11, new Resource(11, "Auditorium V",   "A441-240", 1, global_meter_price, "ROOM", 60.0, 80, global_seat_price));
 
 		
 		//Generate mobile resources (notebooks, smartphones, tablets)
