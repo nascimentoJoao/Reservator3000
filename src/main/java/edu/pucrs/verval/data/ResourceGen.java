@@ -10,6 +10,8 @@ public class ResourceGen {
 	private HashMap<Integer, Double> resource_cost;
 	private HashMap<Integer, Double> resource_meter;
 	private HashMap<Integer, Double> resource_seat;
+	private Double global_meter_price;
+	private Double global_seat_price;
 	
 	public static final ResourceGen instance = new ResourceGen();
 	
@@ -18,14 +20,17 @@ public class ResourceGen {
 		this.resource_cost = new HashMap<>();
 		this.resource_meter = new HashMap<>();
 		this.resource_seat = new HashMap<>();
+		
+		this.global_meter_price = 30.0;
+		this.global_seat_price = 10.0;
 				
 		//Generate physical spaces (rooms)
-		this.resources.put(1, new Resource(1, "Room 506", "R649-506", 1, 30.0, "ROOM", 40.0, 40, 10.0));
-		this.resources.put(2, new Resource(2, "Room 301", "R649-301", 1, 25.0, "ROOM", 36.0, 20, 10.0));
-		this.resources.put(3, new Resource(3, "Room 408", "R649-408", 1, 20.0, "ROOM", 28.0, 10, 10.0));
-		this.resources.put(4, new Resource(4, "Room 700", "R649-700", 1, 28.0, "ROOM", 16.0, 10, 10.0));
-		this.resources.put(5, new Resource(5, "Room 603", "R649-603", 1, 17.0, "ROOM", 32.0, 20, 10.0));
-		this.resources.put(6, new Resource(6, "Room 202", "R649-202", 1, 10.0, "ROOM", 18.0, 10, 10.0));
+		this.resources.put(1, new Resource(1, "Room 506", "R649-506", 1, global_meter_price, "ROOM", 40.0, 40, global_seat_price));
+		this.resources.put(2, new Resource(2, "Room 301", "R649-301", 1, global_meter_price, "ROOM", 36.0, 20, global_seat_price));
+		this.resources.put(3, new Resource(3, "Room 408", "R649-408", 1, global_meter_price, "ROOM", 28.0, 10, global_seat_price));
+		this.resources.put(4, new Resource(4, "Room 700", "R649-700", 1, global_meter_price, "ROOM", 16.0, 10, global_seat_price));
+		this.resources.put(5, new Resource(5, "Room 603", "R649-603", 1, global_meter_price, "ROOM", 32.0, 20, global_seat_price));
+		this.resources.put(6, new Resource(6, "Room 202", "R649-202", 1, global_meter_price, "ROOM", 18.0, 10, global_seat_price));
 		
 		//Generate physical spaces (auditoriums)
 		this.resources.put(7,  new Resource(7,  "Auditorium I",   "A441-506", 1, 45.0, "ROOM", 80.0, 60, 15.0));
@@ -76,4 +81,22 @@ public class ResourceGen {
 	public HashMap<Integer, Double> getResourcesCost() {
 		return this.resource_cost;
 	}
+
+	public Double getGlobal_meter_price() {
+		return global_meter_price;
+	}
+
+	public void setGlobal_meter_price(Double global_meter_price) {
+		this.global_meter_price = global_meter_price;
+	}
+
+	public Double getGlobal_seat_price() {
+		return global_seat_price;
+	}
+
+	public void setGlobal_seat_price(Double global_seat_price) {
+		this.global_seat_price = global_seat_price;
+	}
+	
+	
 }
