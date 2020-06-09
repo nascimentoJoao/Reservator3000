@@ -94,6 +94,20 @@ public class ResourceController {
 		
 		ResourceGen.getInstance().setGlobal_meter_price(config.getMeter_price());
 		ResourceGen.getInstance().setGlobal_seat_price(config.getSeat_price());
+		
+		Iterator it = ResourceGen.getInstance().getResources().entrySet().iterator();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	       
+	        Resource res = (Resource) pair.getValue();
+	        
+	        if(res.getType().equals("ROOM")) {
+	        	res.setPrice_per_seat(config.getSeat_price());
+	        	res.setPrice(config.getMeter_price());
+	        }
+	        
+	    }
 	    
 	    return ResponseEntity.ok().body(true);
 		
