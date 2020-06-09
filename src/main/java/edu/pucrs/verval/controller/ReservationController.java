@@ -60,7 +60,7 @@ public class ReservationController {
 			rgi.setBegin_date(dto.getBegin_date());
 			rgi.setEnd_date(dto.getEnd_date());
 			
-			answer.setAmount(dto.getAmount());
+			rgi.setAmount(dto.getAmount());
 			
 			Resource resource = ResourceGen.getInstance().getResources().get(dto.getResource_id());
 			rgi.setResource(resource);

@@ -16,7 +16,6 @@ public class ReservationSuccess {
 	
 	private LocalDate creation_date;
 	
-	private Integer amount;
 
 	public String getReservation_group_id() {
 		return reservation_group_id;

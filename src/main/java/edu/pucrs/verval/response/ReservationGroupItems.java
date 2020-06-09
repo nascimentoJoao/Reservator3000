@@ -11,6 +11,8 @@ public class ReservationGroupItems {
 	private LocalDate begin_date;
 	
 	private LocalDate end_date;
+	
+	private Integer amount;
 
 	public Resource getResource() {
 		return resource;
@@ -35,5 +37,15 @@ public class ReservationGroupItems {
 	public void setEnd_date(LocalDate end_date) {
 		this.end_date = end_date;
 	}
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+	
+	
 	
 }
