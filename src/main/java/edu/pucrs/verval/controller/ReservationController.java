@@ -135,10 +135,12 @@ public class ReservationController {
 					
 					} else {
 						System.out.println("insuficient_amount");
+						return ResponseEntity.ok().body("insuficient_amount");
 					}
 					
 				}else {
 					System.out.println("reservation_error");
+					return ResponseEntity.ok().body("reservation_error");
 				}
 			}	
 		}
