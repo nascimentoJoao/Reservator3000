@@ -168,7 +168,7 @@ public class ReservationController {
 		return ResponseEntity.ok().body("todo_route");
 	}
 	
-	@DeleteMapping("/reservations/delete?group_id={group_id}")
+	@DeleteMapping("/reservations/delete/{group_id}")
 	public ResponseEntity deleteReservationId(@PathVariable("group_id") String group_id ) {
 		
 		ReservationGen.getInstance().getHistory().remove(group_id);
