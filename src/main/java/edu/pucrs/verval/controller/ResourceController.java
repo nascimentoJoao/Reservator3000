@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -90,7 +91,7 @@ public class ResourceController {
 	}
 	
 	@PostMapping("/admin")
-	public ResponseEntity changePriceSeatAndMeter(AdminConfig config) {
+	public ResponseEntity changePriceSeatAndMeter(@RequestBody AdminConfig config) {
 		
 		ResourceGen.getInstance().setGlobal_meter_price(config.getMeter_price());
 		ResourceGen.getInstance().setGlobal_seat_price(config.getSeat_price());
