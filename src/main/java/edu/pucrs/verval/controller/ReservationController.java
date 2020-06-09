@@ -152,7 +152,7 @@ public class ReservationController {
 		
 		ArrayList<ReservationSuccess> all_reservations = new ArrayList<>();
 		
-		Iterator it = CollaboratorGen.getInstance().getCollaborators().entrySet().iterator();
+		Iterator it = ReservationGen.getInstance().getHistory().entrySet().iterator();
 	    while (it.hasNext()) {
 	        Map.Entry pair = (Map.Entry)it.next();
 	        ReservationSuccess res = (ReservationSuccess) pair.getValue();	        
