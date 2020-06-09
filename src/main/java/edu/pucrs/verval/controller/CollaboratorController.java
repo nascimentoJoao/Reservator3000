@@ -17,14 +17,13 @@ import edu.pucrs.verval.entities.Collaborator;
 @RequestMapping("/api")
 public class CollaboratorController {
 	
-	@GetMapping("/collaborator")
+	@GetMapping("/collaborators")
 	public ResponseEntity<HashMap<Integer, Collaborator>> returnAllCollaborators() {
 		return ResponseEntity.ok().body(CollaboratorGen.getInstance().getCollaborators());
 	}
 	
-	@GetMapping("/collaborator/{collaborator_id}")
+	@GetMapping("/collaborators/{collaborator_id}")
 	public ResponseEntity returnCollaboratorById(@PathVariable("collaborator_id")String collaborator_id) {
-		
 		try {
 			Integer collaborator_id_parse = Integer.parseInt(collaborator_id);
 			return ResponseEntity.ok().body(CollaboratorGen.getInstance().getCollaborators().get(collaborator_id_parse));

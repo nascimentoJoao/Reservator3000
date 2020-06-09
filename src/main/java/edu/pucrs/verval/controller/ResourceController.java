@@ -19,7 +19,7 @@ import edu.pucrs.verval.entities.Resource;
 @RequestMapping("/api")
 public class ResourceController {
 	
-	@GetMapping("/resource")
+	@GetMapping("/resources")
 	public Iterable<Resource> findAllResources() {
 		List<Resource> resource_by_type = new ArrayList<>();
 		
@@ -33,7 +33,7 @@ public class ResourceController {
 		return resource_by_type;
 	}
 	
-	@GetMapping("/resource/{type_of}")
+	@GetMapping("/resources/{type_of}")
 	public Iterable<Resource> findAllResourcesByType(@PathVariable("type_of") String type_of) {
 		type_of = type_of.toLowerCase();
 		List<Resource> resource_by_type = new ArrayList<>();
@@ -50,7 +50,7 @@ public class ResourceController {
 		return resource_by_type;
 	}
 	
-	@GetMapping("/resource/{resource_id}/cost")
+	@GetMapping("/resources/{resource_id}/cost")
 	public Double calculateCostByResourceId(@PathVariable("resource_id") String resource_id) {
 		return 0.0;
 	}

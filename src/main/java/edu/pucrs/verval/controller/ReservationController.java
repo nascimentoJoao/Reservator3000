@@ -32,7 +32,7 @@ import edu.pucrs.verval.utils.Utilitaries;
 @RequestMapping("/api")
 public class ReservationController {
 		
-	@PostMapping("/reservation")
+	@PostMapping("/reservations")
 	@ResponseBody
 	public ResponseEntity reserveResourceForCollaborator(@RequestBody NewReservationDTO reservation) throws InvalidDateIntervalException{
 	
@@ -128,16 +128,14 @@ public class ReservationController {
 		return ResponseEntity.ok().body(answer);
 	}
 	
-	@GetMapping("/reservation") 
+	@GetMapping("/reservations") 
 	public ResponseEntity getAllReservations() {	
 		return ResponseEntity.ok().body(ReservationGen.getInstance().getHistory());
 	}
 	
-	@GetMapping("/reservation/from/{initial_date}/to/{end_date}")
+	@GetMapping("/reservations?start={initial_date}&end={end_date}")
 	public ResponseEntity findAllReservationsBetweenDates(@PathVariable("initial_date") String initial_date, @PathVariable("end_date") String end_date) {
 		//TODO - Check date
-		
-		
 		return ResponseEntity.ok().body("todo_route");
 	}
 

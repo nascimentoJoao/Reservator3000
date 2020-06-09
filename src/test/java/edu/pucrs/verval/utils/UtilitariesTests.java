@@ -87,7 +87,6 @@ public class UtilitariesTests {
 		Boolean result = Utilitaries.reserveFurnitureDateCheck(initial_date, end_date);
 
 		assertEquals(result, false);
-		
 	}
 	
 	
