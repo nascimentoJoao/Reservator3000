@@ -16,6 +16,7 @@ import edu.pucrs.verval.data.CollaboratorGen;
 import edu.pucrs.verval.data.ResourceGen;
 import edu.pucrs.verval.entities.Collaborator;
 import edu.pucrs.verval.entities.Resource;
+import edu.pucrs.verval.response.CollaboratorTotalCost;
 
 @RestController
 @CrossOrigin
@@ -51,7 +52,13 @@ public class CollaboratorController {
 	
 	@GetMapping("/collaborators/{collaborator_id}/cost")
 	public ResponseEntity returnCollaboratorCost(@PathVariable("collaborator_id") String collaborator_id) {
-		return ResponseEntity.ok().body(CollaboratorGen.getInstance().getCollaboratorCost().get(Integer.valueOf(collaborator_id)));
+		
+		CollaboratorTotalCost ctc = new CollaboratorTotalCost();
+		
+		ctc.setCollaborator(CollaboratorGen.getInstance().getCollaborators().get(Integer.valueOf(collaborator_id)));
+		ctc.setTotal_cost(CollaboratorGen.getInstance().getCollaboratorCost().get(Integer.valueOf(collaborator_id)));
+		
+		return ResponseEntity.ok().body(ctc);
 	}
 	
 
