@@ -82,7 +82,9 @@ public class ReservationController {
 				answer.getResources().add(rgi);
 				answer.setTotal_price(answer.getTotal_price() + total_cost);
 				
-				CollaboratorGen.getInstance().getCollaboratorCost().put(answer.getCollaborator_id(), answer.getTotal_price());
+				CollaboratorGen.getInstance().getCollaboratorCost().put(answer.getCollaborator_id(), 
+						CollaboratorGen.getInstance().getCollaboratorCost().get(answer.getCollaborator_id()) +
+						answer.getTotal_price());
 				
 				ReservationGen.getInstance().getItem_date().put(dto.getResource_id(), all_items_reservations);
 				ResourceGen.getInstance().getResourcesCost().put(dto.getResource_id(), 
@@ -123,7 +125,9 @@ public class ReservationController {
 					answer.getResources().add(rgi);
 					answer.setTotal_price(answer.getTotal_price() + total_cost);
 					
-					CollaboratorGen.getInstance().getCollaboratorCost().put(answer.getCollaborator_id(), answer.getTotal_price());
+					CollaboratorGen.getInstance().getCollaboratorCost().put(answer.getCollaborator_id(), 
+							CollaboratorGen.getInstance().getCollaboratorCost().get(answer.getCollaborator_id()) +
+							answer.getTotal_price());
 					
 					} else {
 						System.out.println("insuficient_amount");
