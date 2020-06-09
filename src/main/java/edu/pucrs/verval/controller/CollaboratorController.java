@@ -38,7 +38,7 @@ public class CollaboratorController {
 	}
 	
 	@GetMapping("/collaborators/{collaborator_id}")
-	public ResponseEntity returnCollaboratorById(@PathVariable("collaborator_id")String collaborator_id) {
+	public ResponseEntity returnCollaboratorById(@PathVariable("collaborator_id") String collaborator_id) {
 		try {
 			Integer collaborator_id_parse = Integer.parseInt(collaborator_id);
 			return ResponseEntity.ok().body(CollaboratorGen.getInstance().getCollaborators().get(collaborator_id_parse));
@@ -47,6 +47,11 @@ public class CollaboratorController {
 			return ResponseEntity.badRequest().body(400);
 		}
 		
+	}
+	
+	@GetMapping("/collaboratos/{collaborator_id}/cost")
+	public ResponseEntity returnCollaboratorCost(@PathVariable("collaborator_id") String collaborator_id) {
+		return ResponseEntity.ok().body(CollaboratorGen.getInstance().getCollaboratorCost().get(Integer.valueOf(collaborator_id)));
 	}
 	
 
