@@ -5,7 +5,7 @@ import java.util.HashMap;
 import edu.pucrs.verval.entities.Collaborator;
 
 public class CollaboratorGen {
-	
+	//Testing Sonar
 	private HashMap<Integer, Collaborator> collaborators;
 	private HashMap<Integer, Double> collaborator_cost;
 	
